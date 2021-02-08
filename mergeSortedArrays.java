@@ -12,12 +12,13 @@ public class mergeSortedArrays {
         int counter = 0;
         boolean first = true;
         boolean flag = true;
-        if(n == 0){ System.arraycopy(res, 0, a1, 0, m+n); return;}
-        if(m == 0){ System.arraycopy(res, 0, a2, 0, m+n); return;}
+        if(n == 0) return;
+        if(m == 0){ System.arraycopy(a2, 0, a1, 0, m+n); return;}
         int c1 = 0;
         int c2 = 0;
         while(counter < m+n){
-            if((first && a1[c1] != 0) && flag){
+            if(c1 == m){ System.arraycopy(a2, c2, a1, c1, n-c2); flag = false;}
+            if((first || a1[c1] != 0) && flag){
                 if(c1 < m && a1[c1] > 0) first = false;
                 if(a1[c1] < a2[c2]){
                     res[counter] = a1[c1];
@@ -57,6 +58,6 @@ public class mergeSortedArrays {
             }
         }
         System.arraycopy(res, 0, a1, 0, m+n);
-        System.out.println(Arrays.toString(a1));
     }
 }
+
